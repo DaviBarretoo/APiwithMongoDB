@@ -5,7 +5,6 @@ import {UserLogin} from "../interfaces/interfaceforuser"
 const router = Router()
 
 // Router of register 
-
 router.post('/register', async(req: Request, res: Response)=>{
 
     const {name,email,password}: UserLogin = req.body
@@ -24,5 +23,7 @@ res.status(201).json({
         res.status(400).json(err)
     }
 })
+
+
 
 export default router
