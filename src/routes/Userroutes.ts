@@ -57,6 +57,19 @@ router.delete('/:id',async(req:Request,res: Response)=>{
  })
 
 
+router.get('/emailOfUsers', async(req: Request, res: Response)=>{
+try{
+const users = await  User.find()
+
+const emails = users.map(user => user.email)
+
+res.status(201).json(emails)
+}catch(err)  {
+    res.status(500).json(err)
+       }
+ })
+
+
 
 
 
