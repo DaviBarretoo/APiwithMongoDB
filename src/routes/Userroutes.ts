@@ -24,6 +24,40 @@ res.status(201).json({
     }
 })
 
+router.get('/users',async(req:Request,res: Response)=>{
+   try{
+    const usuarios = await User.find()
+    res.status(201).json({
+        usuarios
+    })
+   }catch(err)  {
+res.status(500).json(err)
+   }
+})
 
 
-export default router
+//  Router for delete user
+router.delete('/:id',async(req:Request,res: Response)=>{
+    const id = req.params.id
+
+  
+    try{
+        const userdeleted = await User.findOne({
+            where:id
+
+            })
+            await userdeleted?.deleteOne()
+
+     res.status(201).json({
+        message: `User deleted ${id}`,
+     })
+    }catch(err)  {
+ res.status(500).json(err)
+    }
+ })
+
+
+
+
+
+export default router;
