@@ -9,14 +9,26 @@ router.post('/register', async(req: Request, res: Response)=>{
 
     const {name,email,password}: UserLogin = req.body
 
+ 
     try{
 const newUser = new User({name,email,password})
-await newUser.save()
+const userInDB = await User.find()
+const emailInDB= userInDB.map(User => User.email)
 
-res.status(201).json({
-    message: `new user ${email}`,
 
-})
+//checking the existence of the user in the database
+if(!emailInDB){
+    await newUser.save()
+   
+    res.status(201).json({
+        message: `new user ${email}`,
+    })
+}else{
+    res.status(201).json({
+        message: `Este User já existe ${email}`,
+    })
+}
+ 
 
     }catch(err){
         res.status(400).json(err)
