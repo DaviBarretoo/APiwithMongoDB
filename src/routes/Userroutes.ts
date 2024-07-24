@@ -15,18 +15,28 @@ const newUser = new User({name,email,password})
 const userInDB = await User.find()
 const emailInDB= userInDB.map(User => User.email)
 
+if(newUser.password.length < 6  ) {
+   res.status(201).json({
+        message: `${name} A sua senha tem que ser maior que 6 caracteres `,
+    })
+    return
+}
 
-//checking the existence of the user in the database
-if(!emailInDB){
+//checking the existence of the user in the database (incluedes check emailInDb === newUser.email)
+if(  emailInDB.includes(newUser.email)){
+    res.status(201).json({
+        message: `Este User  já existe ${email}`,
+    })
+    return
+  
+}else{
     await newUser.save()
    
     res.status(201).json({
         message: `new user ${email}`,
     })
-}else{
-    res.status(201).json({
-        message: `Este User já existe ${email}`,
-    })
+    return
+  
 }
  
 
