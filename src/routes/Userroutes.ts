@@ -15,7 +15,6 @@ await newUser.save()
 
 res.status(201).json({
     message: `new user ${email}`,
-    user: newUser
 
 })
 
