@@ -1,7 +1,7 @@
 import { Router,Request,Response} from "express";
 import User from "../models/User";
 import {UserLogin} from "../interfaces/interfaceforuser"
-
+import * as EmailValidator from 'email-validator';
 const router = Router()
 
 // Router of register 
@@ -15,12 +15,23 @@ const newUser = new User({name,email,password})
 const userInDB = await User.find()
 const emailInDB= userInDB.map(User => User.email)
 
+EmailValidator.validate(newUser.email);
+
+if(EmailValidator.validate(newUser.email) === false) {
+    res.status(201).json({
+        message: `${name} Esse email não é valido por favor inserir um email valido`,
+    })
+    return
+}
+
 if(newUser.password.length < 6  ) {
    res.status(201).json({
         message: `${name} A sua senha tem que ser maior que 6 caracteres `,
     })
     return
 }
+
+
 
 //checking the existence of the user in the database (incluedes check emailInDb === newUser.email)
 if(  emailInDB.includes(newUser.email)){
