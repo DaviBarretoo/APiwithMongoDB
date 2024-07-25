@@ -46,32 +46,43 @@ export const register = async (req: Request, res: Response) => {
   }
 };
 
-export const Userscheck = async(req:Request,res: Response)=>{
+export const Userscheck = async (req: Request, res: Response) => {
+  try {
+    const usuarios = await User.find();
+    res.status(201).json({
+      usuarios,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+export const userDelete = async (req: Request, res: Response) => {
+  const id = req.params.id;
+
+  try {
+    const userdeleted = await User.findOne({
+      where: id,
+    });
+    await userdeleted?.deleteOne();
+
+    res.status(201).json({
+      message: `User deleted`,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+// Move to admin routes 
+export const emailOfUsers = async(req: Request, res: Response)=>{
     try{
-     const usuarios = await User.find()
-     res.status(201).json({
-         usuarios
-     })
+    const users = await  User.find()
+    
+    const emails = users.map(user => user.email)
+    
+    res.status(201).json(emails)
     }catch(err)  {
- res.status(500).json(err)
-    }
- }
-
- export const userDelete=  async(req:Request,res: Response)=>{
-    const id = req.params.id
-
-  
-    try{
-        const userdeleted = await User.findOne({
-            where:id
-
-            })
-            await userdeleted?.deleteOne()
-
-     res.status(201).json({
-        message: `User deleted`,
-     })
-    }catch(err)  {
- res.status(500).json(err)
-    }
- }
+        res.status(500).json(err)
+           }
+     }
