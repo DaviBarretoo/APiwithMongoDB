@@ -79,6 +79,8 @@ export const register = async (req: Request, res: Response) => {
   }
 };
 
+// Router of login == necessario verificação de login e gerar um token para users logado
+
 export const Userscheck = async (req: Request, res: Response) => {
   try {
     const usuarios = await User.find();
