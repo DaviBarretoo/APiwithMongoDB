@@ -62,7 +62,7 @@ export const userDelete = async (req: Request, res: Response) => {
 
   try {
     const userdeleted = await User.findOne({
-      where: id,
+      _id: id,
     });
     await userdeleted?.deleteOne();
 

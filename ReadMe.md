@@ -47,6 +47,20 @@
 
 - (Nenhuma correção nesta versão.)
 
+## [2.0.0] - 2024-07-25
+
+### Added
+
+- (Nenhuma adição nessa versão.)
+
+### Changed
+
+- (Nenhuma alteração nessa versão.)
+
+### Fixed
+
+- Corrigido erro ao deletar um Usuário
+
 ---
 
 <h1> ENGLISH VERSION</h1>
