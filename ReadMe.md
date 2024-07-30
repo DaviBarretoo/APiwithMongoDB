@@ -4,44 +4,44 @@
 
 ### Added
 
-- Criação da API completa usando TypeScript, Node.js, MongoDB e Express.
-- Configuração das rotas iniciais `emailsOfUsers`, `user delete`.
-- Implementação da biblioteca `nodemon` para reiniciar automaticamente.
-- Adição do arquivo `.gitignore` para excluir arquivos desnecessários.
+- Implementação completa da API utilizando TypeScript, Node.js, MongoDB e Express.
+- Configuração das rotas iniciais `emailsOfUsers` e `userdelete`.
+- Integração da biblioteca `nodemon` para reinicialização automática durante o desenvolvimento.
+- Inclusão do arquivo `.gitignore` para a exclusão de arquivos desnecessários do controle de versão.
 
 ### Changed
 
-- Atualização do `package.json` para incluir dependências necessárias.
-- Configuração do `nodemon` para reiniciar automaticamente o servidor em alterações de código.
+- Atualização do `package.json` para incluir as dependências necessárias.
+- Configuração do `nodemon` para reiniciar automaticamente o servidor em resposta a alterações no código.
 
 ### Fixed
 
-- Correção de bugs iniciais no setup do servidor.
+- Correção de erros iniciais na configuração do servidor.
 
 ## [1.0.1] - 2024-07-24
 
 ### Added
 
-- Adicionada checagem para verificar se o usuário já existe.
+- Implementação de verificação para garantir que o usuário não seja duplicado.
 
 ### Changed
 
-- Atualização na rota de `register`.
+- Atualização da rota de `register`.
 
 ### Fixed
 
-- Correção na criação de usuários.
+- Correção de problemas na criação de usuários.
 
 ## [2.0.0] - 2024-07-25
 
 ### Added
 
-- Criação dos controladores de usuários no `controllers`.
-- Adicionada checagem de validação de email.
+- Desenvolvimento dos controladores de usuários em `controllers`.
+- Implementação de validação de e-mail para aprimorar a integridade dos dados.
 
 ### Changed
 
-- Refatoração em todas as rotas.
+- Refatoração das rotas para melhorar a organização e eficiência.
 
 ### Fixed
 
@@ -51,19 +51,34 @@
 
 ### Added
 
-- (Nenhuma adição nessa versão.)
+- (Nenhuma adição nesta versão.)
 
 ### Changed
 
-- (Nenhuma alteração nessa versão.)
+- (Nenhuma alteração nesta versão.)
 
 ### Fixed
 
-- Corrigido erro ao deletar um Usuário
+- Correção de erro ao deletar um usuário.
+
+## [3.0.0] - 2024-07-30
+
+### Added
+
+- Implementação de autenticação JWT para restringir o acesso a rotas específicas, aumentando a segurança da aplicação.
+- Criação da rota de login para autenticação de usuários.
+
+### Changed
+
+- Ajuste na rota de login para melhorar a funcionalidade e segurança.
+
+### Fixed
+
+- Correção do problema que impedia usuários de acessar rotas privadas.
 
 ---
 
-<h1> ENGLISH VERSION</h1>
+<h1>ENGLISH VERSION ✅</h1>
 
 # Changelog
 
@@ -71,45 +86,74 @@
 
 ### Added
 
-- Created the complete API using TypeScript, Node.js, MongoDB, and Express.
-- Set up initial routes `emailsOfUsers`, `user delete`.
-- Implemented `nodemon` to automatically restart the server.
-- Added `.gitignore` file to exclude unnecessary files.
+- Full implementation of the API using TypeScript, Node.js, MongoDB, and Express.
+- Configuration of initial routes `emailsOfUsers` and `user delete`.
+- Integration of the `nodemon` library for automatic restarts during development.
+- Addition of the `.gitignore` file to exclude unnecessary files from version control.
 
 ### Changed
 
 - Updated `package.json` to include necessary dependencies.
-- Configured `nodemon` to automatically restart the server on code changes.
+- Configured `nodemon` to automatically restart the server in response to code changes.
 
 ### Fixed
 
-- Fixed initial bugs in server setup.
+- Fixed initial setup errors in the server configuration.
 
 ## [1.0.1] - 2024-07-24
 
 ### Added
 
-- Added check to verify if the user already exists.
+- Implemented check to ensure that users are not duplicated.
 
 ### Changed
 
-- Updated `register` route.
+- Updated the `register` route.
 
 ### Fixed
 
-- Fixed user creation issues.
+- Fixed issues with user creation.
 
 ## [2.0.0] - 2024-07-25
 
 ### Added
 
-- Created user controllers in `controllers`.
-- Added email validation check.
+- Developed user controllers in `controllers`.
+- Implemented email validation to enhance data integrity.
 
 ### Changed
 
-- Refactored all routes.
+- Refactored all routes to improve organization and efficiency.
 
 ### Fixed
 
 - (No fixes in this version.)
+
+## [2.0.1] - 2024-07-25
+
+### Added
+
+- (No additions in this version.)
+
+### Changed
+
+- (No changes in this version.)
+
+### Fixed
+
+- Fixed issue with deleting a user.
+
+## [3.0.0] - 2024-07-30
+
+### Added
+
+- Implemented JWT authentication to restrict access to certain routes, enhancing application security.
+- Created the login route for user authentication.
+
+### Changed
+
+- Adjusted the login route to improve functionality and security.
+
+### Fixed
+
+- Fixed issue preventing users from accessing private routes.
