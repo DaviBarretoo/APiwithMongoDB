@@ -1,7 +1,10 @@
 import { Request, Response } from "express";
 import User from "../models/User";
 import { UserLogin } from "../interfaces/interfaceforuser";
+import {interfaceOfLogin} from "../interfaces/interfaceForLogin"
 import * as EmailValidator from "email-validator";
+import jwt from "jsonwebtoken";
+
 import bcrypt from 'bcrypt'
 
 const saltRounds = 10 
@@ -80,6 +83,63 @@ export const register = async (req: Request, res: Response) => {
 };
 
 // Router of login == necessario verificação de login e gerar um token para users logado
+export const LoginUser = async (req:Request,res: Response)=> {
+
+  const {email, password }:interfaceOfLogin = req.body;
+
+  try{
+
+const user = await User.findOne({email})
+
+if(!user){
+  console.log(email)
+  res.status(400).json("Usuário não encontrado ou credências incorretas");
+  return
+}
+
+const passwordOfUser = await cPasswordBcrypt(password , user.password)
+
+if(!passwordOfUser){
+  res.status(400).json("Email ou senha incorreta");
+  return
+}
+
+
+const foundUser = await User.findOne({ name: user.name, _id:user._id});
+
+if (!foundUser) {
+  return console.log("user n encontrado")
+}
+
+ const SECRET_KEY = process.env.TOKEN_SECRET ;
+if (!SECRET_KEY){
+  console.log(SECRET_KEY)
+  return console.log("a key não chegou")
+}
+
+
+const token = jwt.sign({ _id: foundUser?._id?.toString(), name: foundUser?.name }, SECRET_KEY, {
+  expiresIn: process.env.TOKEN_EXPIRATION,
+
+  
+});
+console.log(SECRET_KEY)
+console.log(token)
+
+res.status(201).json({ user: { email }, token: token });
+
+
+
+  }catch(err){
+    res.status(500).json(err)
+  }
+
+}
+
+
+
+
+
 
 export const Userscheck = async (req: Request, res: Response) => {
   try {

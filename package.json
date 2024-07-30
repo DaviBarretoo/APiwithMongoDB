@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon",
-    "startTS":"ts-node src/index.ts",
+    "startTS": "ts-node src/index.ts",
     "build": "tsc"
   },
   "keywords": [],
@@ -21,11 +21,13 @@
   },
   "dependencies": {
     "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.6",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
     "dotenv": "^16.4.5",
     "email-validator": "^2.0.4",
     "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.8.0",
     "mongoose": "^8.5.1"
   }
