@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request, response, Response } from "express";
 import User from "../models/User";
 import { UserLogin } from "../interfaces/interfaceforuser";
 import {interfaceOfLogin} from "../interfaces/interfaceForLogin"
@@ -175,8 +175,37 @@ export const emailOfUsers = async(req: Request, res: Response)=>{
     
     const emails = users.map(user => user.email)
     
-    res.status(201).json(emails)
+    res.status(200).json(emails)
     }catch(err)  {
         res.status(500).json(err)
            }
      }
+
+
+// ROUTER TO UPDATE Use
+
+export const UpdateDados = async(req: Request,res: Response) => {
+
+  const id = req.params.id
+const { name, email, password }: UserLogin = req.body;
+
+const userupdating = {
+  name,
+   email,
+    password
+}
+
+  try{
+const atualizacaoDeUsuario = await User.updateOne({_id:id},userupdating)
+
+if(id === undefined ){
+  res.status(500).json({
+    message: `USER NÃO ENCONTRADO ERRO INTERNO`,
+  })
+}
+res.status(200).json(userupdating)
+
+  }catch(err){
+    res.status(500).json(err)
+  }
+}
