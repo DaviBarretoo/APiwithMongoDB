@@ -92,7 +92,7 @@ export const LoginUser = async (req:Request,res: Response)=> {
 const user = await User.findOne({email})
 
 if(!user){
-  console.log(email)
+
   res.status(400).json("Usuário não encontrado ou credências incorretas");
   return
 }
@@ -114,7 +114,7 @@ if (!foundUser) {
  const SECRET_KEY = process.env.TOKEN_SECRET ;
 if (!SECRET_KEY){
  
-  return console.log("a key não chegou")
+  return console.log("ERROR IN KEY")
 }
 
 
