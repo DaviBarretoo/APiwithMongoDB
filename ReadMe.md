@@ -76,84 +76,16 @@
 
 - Correção do problema que impedia usuários de acessar rotas privadas.
 
----
-
-<h1>ENGLISH VERSION ✅</h1>
-
-# Changelog
-
-## [1.0.0] - 2024-07-20
+## [3.0.1] - 2024-08-03
 
 ### Added
 
-- Full implementation of the API using TypeScript, Node.js, MongoDB, and Express.
-- Configuration of initial routes `emailsOfUsers` and `user delete`.
-- Integration of the `nodemon` library for automatic restarts during development.
-- Addition of the `.gitignore` file to exclude unnecessary files from version control.
+- Rota para atualização de dados do Usuarios
 
 ### Changed
 
-- Updated `package.json` to include necessary dependencies.
-- Configured `nodemon` to automatically restart the server in response to code changes.
+-
 
 ### Fixed
 
-- Fixed initial setup errors in the server configuration.
-
-## [1.0.1] - 2024-07-24
-
-### Added
-
-- Implemented check to ensure that users are not duplicated.
-
-### Changed
-
-- Updated the `register` route.
-
-### Fixed
-
-- Fixed issues with user creation.
-
-## [2.0.0] - 2024-07-25
-
-### Added
-
-- Developed user controllers in `controllers`.
-- Implemented email validation to enhance data integrity.
-
-### Changed
-
-- Refactored all routes to improve organization and efficiency.
-
-### Fixed
-
-- (No fixes in this version.)
-
-## [2.0.1] - 2024-07-25
-
-### Added
-
-- (No additions in this version.)
-
-### Changed
-
-- (No changes in this version.)
-
-### Fixed
-
-- Fixed issue with deleting a user.
-
-## [3.0.0] - 2024-07-30
-
-### Added
-
-- Implemented JWT authentication to restrict access to certain routes, enhancing application security.
-- Created the login route for user authentication.
-
-### Changed
-
-- Adjusted the login route to improve functionality and security.
-
-### Fixed
-
-- Fixed issue preventing users from accessing private routes.
+- Correção de segurança no `SECRET TOKEN`.
