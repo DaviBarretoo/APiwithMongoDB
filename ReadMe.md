@@ -80,7 +80,7 @@
 
 ### Added
 
-- Rota para atualização de dados do Usuarios
+- Rota para atualização de dados do Usuários
 
 ### Changed
 

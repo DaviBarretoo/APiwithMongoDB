@@ -1,4 +1,4 @@
-import { Request, response, Response } from "express";
+import { Request, Response } from "express";
 import User from "../models/User";
 import { UserLogin } from "../interfaces/interfaceforuser";
 import {interfaceOfLogin} from "../interfaces/interfaceForLogin"
@@ -135,11 +135,6 @@ res.status(201).json({ user: { email }, token: token });
 
 }
 
-
-
-
-
-
 export const Userscheck = async (req: Request, res: Response) => {
   try {
     const usuarios = await User.find();
@@ -167,23 +162,7 @@ export const userDelete = async (req: Request, res: Response) => {
     res.status(500).json(err);
   }
 };
-
-// Move to admin routes 
-export const emailOfUsers = async(req: Request, res: Response)=>{
-    try{
-    const users = await  User.find()
-    
-    const emails = users.map(user => user.email)
-    
-    res.status(200).json(emails)
-    }catch(err)  {
-        res.status(500).json(err)
-           }
-     }
-
-
 // ROUTER TO UPDATE Use
-
 export const UpdateDados = async(req: Request,res: Response) => {
 
   const id = req.params.id
