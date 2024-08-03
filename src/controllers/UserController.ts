@@ -113,7 +113,7 @@ if (!foundUser) {
 
  const SECRET_KEY = process.env.TOKEN_SECRET ;
 if (!SECRET_KEY){
-  console.log(SECRET_KEY)
+ 
   return console.log("a key não chegou")
 }
 
@@ -123,8 +123,7 @@ const token = jwt.sign({ _id: foundUser?._id?.toString(), name: foundUser?.name 
 
   
 });
-console.log(SECRET_KEY)
-console.log(token)
+
 
 res.status(201).json({ user: { email }, token: token });
 

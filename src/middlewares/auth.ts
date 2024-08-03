@@ -1,9 +1,8 @@
-import jwt, {Secret,JwtPayload} from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import {Request,Response, NextFunction} from "express"
 import { Crequest } from "../interfaces/InterfaceofRequest";
 
-export const SECRET_KEY: Secret = 'DEUSÉFIELESEMPREVAISERPORTODAAMINHAVID@2K24FOGUETENTEMRÉ'
-
+//const SECRET_KEY :Secret = process.env.TOKEN_SECRET
 
 export const auth = async(req: Request,res: Response, next: NextFunction)=>{
     
@@ -14,8 +13,10 @@ try{
     if(!token){
         throw new Error(' Não foi possivel LOCALIZAR O TOKEN')
     }
-
-       const decoded = jwt.verify(token, SECRET_KEY);
+if(process.env.TOKEN_SECRET === undefined){
+    throw new Error(' ERROR IN SECRET TOKEN PLEASE CONTACT THE DEVELOPER')
+}
+       const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
 
     (req as Crequest).token= decoded
    
